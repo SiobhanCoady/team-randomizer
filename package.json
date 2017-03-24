@@ -1,0 +1,28 @@
+{
+  "name": "team-randomizer",
+  "version": "1.0.0",
+  "description": "Team Randomizer",
+  "main": "app.js",
+  "author": "Siobhan Coady",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app.js",
+    "debug": "nodemon --inspect app.js",
+    "db:drop": "dropdb -e teams",
+    "db:create": "createdb -e teams",
+    "db:reset": "yarn db:drop && yarn db:create",
+    "db:migrate": "node db/migrate.js",
+    "db:seed": "node db/seed.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "pg-promise": "^5.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

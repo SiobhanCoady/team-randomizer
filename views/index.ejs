@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+<h1>Team Randomizer</h1>
+
+<form method="post">
+  <div>
+    <label for="names">Names: </label>
+  </div>
+  <div class="div-inline">
+    <textarea name="names" id="names" rows="8" cols="80"></textarea>
+  </div>
+
+  <div class="div-inline">
+    <div class="control-group">
+      <label class="control control--radio">Number of teams
+        <input type="radio" name="divide_by" value="number_teams">
+        <div class="control__indicator"></div>
+      </label>
+      <label class="control control--radio">Number of members per team
+        <input type="radio" name="divide_by" value="members_per_team">
+        <div class="control__indicator"></div>
+      </label>
+      <input type="text" name="divide_by">
+    </div>
+    <div class="div-block">
+      <input type="submit" id="submit">
+    </div>
+  </div>
+</form>
+
+<% if (teams) { %>
+  <hr>
+  <% for (let team in teams) { %>
+    <div class="display-team">
+      <h3>Team <%= team %></h3>
+      <ul>
+        <% for (let name of teams[team]) { %>
+          <li><%= name %></li>
+        <% } %>
+      </ul>
+    </div>
+  <% } %>
+<% } %>
+
+<% if (error) { %>
+  <h2><%= error %></h2>
+<% } %>
+
+<%- include('partials/footer') %>
